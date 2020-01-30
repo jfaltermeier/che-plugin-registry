@@ -1,0 +1,25 @@
+apiVersion: v2
+publisher: eclipsesource
+name: ecore-glsp
+version: 0.0.0
+type: Che Editor
+displayName: Ecore Editor
+title: Editor for Ecore Files in Che
+icon: https://raw.githubusercontent.com/theia-ide/theia/master/logo/theia-logo-no-text-black.svg?sanitize=true
+description: Modelling Tool running in the Web.
+category: Editor
+repository: https://github.com/eclipsesource/ecore-glsp
+spec:
+  endpoints:
+   -  name: "ecore-editor"
+      public: true # TODO: Is this really necessary?
+      targetPort: 3000
+      attributes:
+        protocol: http
+        type: ide
+  containers:
+   - name: eclipse-ide
+     image: "docker.io/jcebel/ecore-glsp:0.0.0"
+     mountSources: true
+     ports:
+         - exposedPort: 3000
